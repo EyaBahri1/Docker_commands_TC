@@ -1,0 +1,81 @@
+Voici un exemple de design simple et élégant pour un fichier texte (.txt) en utilisant une mise en forme claire et structurée, que vous pouvez copier et utiliser pour rendre votre contenu plus lisible et professionnel :
+
+---
+
+**Différence entre Virtualisation et Conteneurisation**
+
+---
+
+**Virtualisation :**  
+- Hyperviseur partage les ressources physiques avec plusieurs VM.  
+- Chaque VM possède son propre système d'exploitation (OS).  
+
+**Conteneurisation :**  
+- Partage le même OS de l'hôte.  
+- Isolent les applications au niveau des processus.  
+
+---
+
+**Présentation de Docker**
+
+- Plateforme libre (gratuite) utilisant la virtualisation pour créer ou déployer des applications sous forme de conteneurs.  
+
+**Images et Conteneurs**  
+- **Image :** Modèle statique contenant tout l'environnement nécessaire pour exécuter une application.  
+- **Conteneur :** Instance en exécution d'une image.  
+
+---
+
+**Commandes Docker Essentielles**
+
+```bash
+# Installer Docker
+sudo apt-get install docker.io
+
+# Démarrer Docker
+sudo systemctl start docker
+
+# Activer Docker au démarrage
+sudo systemctl enable docker
+
+# Ajouter utilisateur au groupe Docker
+sudo groupadd docker
+sudo usermod -aG docker <user-machine>
+
+# Vérifier Docker
+docker info
+
+# Rechercher une image
+docker search <nom-image>
+
+# Télécharger une image
+docker pull hello-world
+
+# Exécuter un conteneur
+docker run hello-world
+
+# Voir les conteneurs en cours
+docker ps
+
+# Voir tous les conteneurs
+docker ps -a
+
+# Supprimer un conteneur
+docker rm <id-conteneur>
+
+# Exécuter en arrière-plan avec port
+docker run -tdi -p 8082:80 nginx
+
+# Accéder au shell du conteneur
+docker exec -it <id-conteneur> /bin/bash
+
+# Monter un volume
+docker run -tdi -p 8083:80 -v /chemin/local:/chemin/conteneur --name my-nginx-container nginx
+
+# Arrêter un conteneur
+docker stop <id-conteneur>
+
+# Supprimer une image
+docker rmi -f <id-image>
+
+
