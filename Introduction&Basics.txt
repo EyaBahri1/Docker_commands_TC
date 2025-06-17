@@ -62,7 +62,7 @@ docker ps -a
 # Supprimer un conteneur
 docker rm <id-conteneur>
 
-# Exécuter en arrière-plan avec port
+# Exécuter une image en arrière-plan avec port
 docker run -tdi -p 8082:80 nginx
 
 # Accéder au shell du conteneur
@@ -71,7 +71,7 @@ docker exec -it <id-conteneur> /bin/bash
 -i : Interaction avec le terminal (stdin ouvert).
 -t : TTY (terminal virtuel) pour une interface interactive.
 
-# Monter un volume
+# Exécuter une image en Montant un volume 
 docker run -tdi -p 8083:80 -v /chemin/local:/chemin/conteneur --name my-nginx-container nginx
 
 -d : arrière-plan (détaché)
