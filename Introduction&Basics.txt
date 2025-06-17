@@ -1,34 +1,33 @@
-Voici un exemple de design simple et élégant pour un fichier texte (.txt) en utilisant une mise en forme claire et structurée, que vous pouvez copier et utiliser pour rendre votre contenu plus lisible et professionnel :
+---
+
+Différence entre Virtualisation et Conteneurisation
 
 ---
 
-**Différence entre Virtualisation et Conteneurisation**
-
----
-
-**Virtualisation :**  
+Virtualisation : 
 - Hyperviseur partage les ressources physiques avec plusieurs VM.  
 - Chaque VM possède son propre système d'exploitation (OS).  
 
-**Conteneurisation :**  
+Conteneurisation :  
 - Partage le même OS de l'hôte.  
 - Isolent les applications au niveau des processus.  
 
 ---
 
-**Présentation de Docker**
+Présentation de Docker
 
 - Plateforme libre (gratuite) utilisant la virtualisation pour créer ou déployer des applications sous forme de conteneurs.  
 
-**Images et Conteneurs**  
-- **Image :** Modèle statique contenant tout l'environnement nécessaire pour exécuter une application.  
-- **Conteneur :** Instance en exécution d'une image.  
+Images et Conteneurs  
+- Image : Modèle statique contenant tout l'environnement nécessaire pour exécuter une application.  
+- Conteneur : Instance en exécution d'une image.  
 
 ---
 
-**Commandes Docker Essentielles**
+Commandes Docker Essentielles
 
 ```bash
+
 # Installer Docker
 sudo apt-get install docker.io
 
@@ -69,8 +68,13 @@ docker run -tdi -p 8082:80 nginx
 # Accéder au shell du conteneur
 docker exec -it <id-conteneur> /bin/bash
 
+-i : Interaction avec le terminal (stdin ouvert).
+-t : TTY (terminal virtuel) pour une interface interactive.
+
 # Monter un volume
 docker run -tdi -p 8083:80 -v /chemin/local:/chemin/conteneur --name my-nginx-container nginx
+
+-d : arrière-plan (détaché)
 
 # Arrêter un conteneur
 docker stop <id-conteneur>
