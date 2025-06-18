@@ -1,0 +1,90 @@
+---
+
+- Docker Compose est un fichier qui nous permet d'executer plusieurs conteneurs ensemble 
+
+1- Installer docker compose 
+
+2- Exécuter docker-compose --help // Ou bien // docker-compose --version 
+pour tester les commandes 
+
+-Contrairement à la modification d'un dockerfile si on modifie le fichier docker-compose.yml on a
+pas besoin de refaire un build 
+
+---
+
+Principales commandes : 
+
+# Démarrer tous les services définis dans le fichier
+docker-compose up
+
+# Démarrer en mode détaché (en arrière-plan)
+docker-compose up -d
+
+# Arrêter tous les services
+docker-compose down
+
+# Recréer et relancer les services (en reconstruisant si nécessaire)
+docker-compose up --build
+
+# Voir le statut des containers
+docker-compose ps
+
+# Visualiser les logs
+docker-compose logs
+
+# Visualiser les logs en temps réel
+docker-compose logs -f
+
+# Arrêter un service spécifique
+docker-compose stop <service_name>
+
+# Redémarrer un service spécifique
+docker-compose restart <service_name>
+
+# Supprimer les containers, réseaux, volumes (attention)
+docker-compose down -v
+
+---
+Exemple : 
+
+version: '3'
+
+services:
+  backend:
+    container_name: mern-backend
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - mongo
+    command: npm start
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    container_name: mern-frontend
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    command: npm start
+    volumes:
+      - ./frontend:/app
+
+  mongo:
+    container_name: mern-mongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+
+
