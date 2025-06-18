@@ -1,0 +1,75 @@
+---
+
+-Un Dockerfile est utilisé pour créer une image spécifique, basée sur une autre image.
+
+-On peut ajouter directement des lignes de commandes dans un fichier nommé "Dockerfile", 
+puis l'exécuter pour construire l'image.
+
+-Après chaque modification du Dockerfile, il est nécessaire de faire un "build" pour mettre
+à jour l'image.
+
+---
+
+## Commands in the Dockerfile:
+
+### COPY:
+-  copie des fichiers depuis le host système vers le host docker 
+
+### ADD:
+-copie des fichiers/dossiers depuis le host système vers le host docker 
+
+### ENV:
+- ajouter une variable d’environnement
+
+### RUN (BUILD TIME):
+- permet de spécifier une commande à exécuter pendant le build de l’image
+- (Exemple: RUN apt update && apt install vim)
+
+### CMD (RUNTIME) : à ne pas confondre avec RUN, cette instruction permet d’exécuter une instruction au moment de lancement des conteneurs
+
+### EXPOSE:
+-Exposé un port TCP au host systéme
+
+### FROM:
+- Télecharger une image depuis Dockerhub
+
+### VOLUME:
+-Créer un volume depuis un Dockerfile  (mais je préfére les faire à travers : 
+-Terminal 
+-Docker Compose)
+
+### WORKDIR:
+-Créer un dossier de travail
+---------------------------------
+#Build the Docker Image:
+docker build -t <image-name> .
+
+#Push the Image to Docker Hub
+
+#1--Login to Dockerhub
+docker login -u <dockerhub-username>
+
+#EX :  docker login -u eyabahri14
+
+#2--Tag the Image 
+docker tag <local-image-id> <dockerhub-username>/<repository-name>:latest
+
+#EX : docker tag 51414eeedd49 eyabahri14/saveursdefatma:latest
+
+#3--Push the Image 
+docker push <dockerhub-username>/<repository-name>:<tag>
+
+#EX : docker push eyabahri14/saveursdefatma:latest
+​
+---
+
+Ex Dockerfile 
+
+FROM nginx 
+
+RUN apt update && /
+     apt install vim -y
+
+COPY index.html /usr/share/nginx/html/
+
+EXPOSE 80 
