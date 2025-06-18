@@ -63,3 +63,14 @@ docker push <dockerhub-username>/<repository-name>:<tag>
 
 #EX : docker push eyabahri14/saveursdefatma:latest
 ​
+----
+Methode 2 
+
+# Construire l'image avec un nouveau tag
+docker build -t <registry>/<repository>:<tag> .
+
+# Se connecter au registre (si nécessaire)
+docker login <registry>
+
+# Pousser l'image taguée vers le registre
+docker push <registry>/<repository>:<tag>
