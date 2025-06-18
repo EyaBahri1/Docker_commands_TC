@@ -18,9 +18,6 @@ Ex 2 Avec NodeJs
 # FROM : image de base avec Node.js
 FROM node:14
 
-# ENV : variable d’environnement (optionnel)
-ENV NODE_ENV=production
-
 # WORKDIR : dossier de travail
 WORKDIR /app
 
@@ -33,8 +30,11 @@ RUN npm install
 # COPY : copier le reste du code
 COPY . .
 
+# ENV : variable d’environnement (optionnel)
+ENV PORT 80
+
 # EXPOSE : port utilisé par l'app Node.js
-EXPOSE 3000
+EXPOSE ${PORT}
 
 # CMD : lancer l'application
 CMD ["node", "app.js"]
