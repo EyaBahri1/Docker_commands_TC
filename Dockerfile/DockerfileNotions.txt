@@ -1,82 +1,76 @@
-
 ---
 
-A Dockerfile is used to create a specific image, based on another image.
+-Un Dockerfile est utilisé pour créer une image spécifique, basée sur une autre image.
 
-You can add commands directly into a file named "Dockerfile", then run it to build the image.
+-On peut ajouter directement des lignes de commandes dans un fichier nommé "Dockerfile", 
+puis l'exécuter pour construire l'image.
 
-After each modification of the Dockerfile, you need to perform a "build" to update the image.
+-Après chaque modification du Dockerfile, il est nécessaire de faire un "build" pour mettre
+à jour l'image.
 
 ---
 
 ## Commands in the Dockerfile:
 
-COPY:  
-Copies files from the host system to the Docker image.
+### COPY:
+-  copie des fichiers depuis le host système vers le host docker 
 
-ADD:  
-Copies files/directories from the host system to the Docker image.
+### ADD:
+-copie des fichiers/dossiers depuis le host système vers le host docker 
 
-ENV:  
-Adds an environment variable.
+### ENV:
+- ajouter une variable d’environnement
 
-RUN (BUILD TIME):  
-Specifies a command to execute during the image build.  
-(Example: RUN apt update && apt install vim)
+### RUN (BUILD TIME):
+- permet de spécifier une commande à exécuter pendant le build de l’image
+- (Exemple: RUN apt update && apt install vim)
 
-CMD (RUNTIME):  
-Not to be confused with RUN, this instruction runs a command when the container starts.
+### CMD (RUNTIME) : à ne pas confondre avec RUN, cette instruction permet d’exécuter une instruction au moment de lancement des conteneurs
 
-EXPOSE:  
-Exposes a TCP port to the host system.
+### EXPOSE:
+-Exposé un port TCP au host systéme
 
-FROM:  
-Downloads an image from Docker Hub.
+### FROM:
+- Télecharger une image depuis Dockerhub
 
-VOLUME:  
-Creates a volume from a Dockerfile (but I prefer doing this via:  
-- Terminal  
-- Docker Compose)
+### VOLUME:
+-Créer un volume depuis un Dockerfile  (mais je préfére les faire à travers : 
+-Terminal 
+-Docker Compose)
 
-WORKDIR:  
-Creates a working directory.
+### WORKDIR:
+-Créer un dossier de travail
 
----
+---------------------------------
 
-## Build the Docker Image:
+#Build the Docker Image:
+docker build -t <image-name> $path_vers_le_dockerfile
 
-docker build -t <image-name> <path_to_dockerfile>
+#Push the Image to Docker Hub
 
-## Push the Image to Docker Hub:
-
-1. Login to Docker Hub:  
-
+#1--Login to Dockerhub
 docker login -u <dockerhub-username>
-  
-Example: `docker login -u eyabahri14`
 
-2. Tag the Image:  
+#EX :  docker login -u eyabahri14
 
+#2--Tag the Image 
 docker tag <local-image-id> <dockerhub-username>/<repository-name>:latest
-  
-Example: `docker tag 51414eeedd49 eyabahri14/saveursdefatma:latest`
 
-3. Push the Image:  
+#EX : docker tag 51414eeedd49 eyabahri14/saveursdefatma:latest
 
+#3--Push the Image 
 docker push <dockerhub-username>/<repository-name>:<tag>
-  
-Example: `docker push eyabahri14/saveursdefatma:latest`
 
----
+#EX : docker push eyabahri14/saveursdefatma:latest
+​
+----
+Methode 2 
 
-## Method 2:
-
-
-# Build the image with a new tag
+# Construire l'image avec un nouveau tag
 docker build -t <registry>/<repository>:<tag> .
 
-# Log in to the registry (if needed)
+# Se connecter au registre (si nécessaire)
 docker login <registry>
 
-# Push the tagged image to the registry
+# Pousser l'image taguée vers le registre
 docker push <registry>/<repository>:<tag>
