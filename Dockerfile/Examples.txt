@@ -1,0 +1,40 @@
+---
+
+Ex 1 avec Nginx
+
+FROM nginx 
+
+RUN apt update && /
+     apt install vim -y
+
+COPY index.html /usr/share/nginx/html/
+
+EXPOSE 80 
+
+---------------------------------
+
+Ex 2 Avec NodeJs 
+
+# FROM : image de base avec Node.js
+FROM node:14
+
+# ENV : variable d’environnement (optionnel)
+ENV NODE_ENV=production
+
+# WORKDIR : dossier de travail
+WORKDIR /app
+
+# COPY : copier package.json et package-lock.json
+COPY package*.json ./
+
+# RUN : installer les dépendances
+RUN npm install
+
+# COPY : copier le reste du code
+COPY . .
+
+# EXPOSE : port utilisé par l'app Node.js
+EXPOSE 3000
+
+# CMD : lancer l'application
+CMD ["node", "app.js"]

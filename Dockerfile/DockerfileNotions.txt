@@ -40,7 +40,9 @@ puis l'exécuter pour construire l'image.
 
 ### WORKDIR:
 -Créer un dossier de travail
+
 ---------------------------------
+
 #Build the Docker Image:
 docker build -t <image-name> $path_vers_le_dockerfile
 
@@ -61,15 +63,3 @@ docker push <dockerhub-username>/<repository-name>:<tag>
 
 #EX : docker push eyabahri14/saveursdefatma:latest
 ​
----
-
-Ex Dockerfile 
-
-FROM nginx 
-
-RUN apt update && /
-     apt install vim -y
-
-COPY index.html /usr/share/nginx/html/
-
-EXPOSE 80 
