@@ -42,7 +42,7 @@ puis l'exécuter pour construire l'image.
 -Créer un dossier de travail
 ---------------------------------
 #Build the Docker Image:
-docker build -t <image-name> .
+docker build -t <image-name> $path_vers_le_dockerfile
 
 #Push the Image to Docker Hub
 
