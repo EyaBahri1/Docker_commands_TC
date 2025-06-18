@@ -1,51 +1,52 @@
 ---
 
-- Docker Compose est un fichier qui nous permet d'executer plusieurs conteneurs ensemble 
+Docker Compose is a file that allows us to run multiple containers together.
 
-1- Installer docker compose 
+1. Install Docker Compose.
 
-2- Exécuter docker-compose --help // Ou bien // docker-compose --version 
-pour tester les commandes 
+2. Run `docker-compose --help` or `docker-compose --version` to test the commands.
 
--Contrairement à la modification d'un dockerfile si on modifie le fichier docker-compose.yml on a
-pas besoin de refaire un build 
+- Unlike changing a Dockerfile, if you modify the `docker-compose.yml` file, you don't need to rebuild the images.
 
 ---
 
-Principales commandes : 
+Main commands:
 
-# Démarrer tous les services définis dans le fichier
+```bash
+# Start all services defined in the file
 docker-compose up
 
-# Démarrer en mode détaché (en arrière-plan)
+# Start in detached mode (in the background)
 docker-compose up -d
 
-# Arrêter tous les services
+# Stop all services
 docker-compose down
 
-# Recréer et relancer les services (en reconstruisant si nécessaire)
+# Recreate and restart services (rebuild if needed)
 docker-compose up --build
 
-# Voir le statut des containers
+# See the status of containers
 docker-compose ps
 
-# Visualiser les logs
+# View logs
 docker-compose logs
 
-# Visualiser les logs en temps réel
+# View logs in real-time
 docker-compose logs -f
 
-# Arrêter un service spécifique
+# Stop a specific service
 docker-compose stop <service_name>
 
-# Redémarrer un service spécifique
+# Restart a specific service
 docker-compose restart <service_name>
 
-# Supprimer les containers, réseaux, volumes (attention)
+# Remove containers, networks, and volumes (be careful)
 docker-compose down -v
+```
 
 ---
-Exemple : 
+
+Example:
 
 version: '3'
 
@@ -86,5 +87,4 @@ services:
 
 volumes:
   mongo-data:
-
-
+```
